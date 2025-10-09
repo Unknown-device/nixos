@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ../modules/desktop/starship.nix
+    ../modules/desktop/gh.nix
     #    ../modules/desktop/stylix.nix
     ../modules/desktop/fish.nix
     ../modules/desktop/spicetify.nix
