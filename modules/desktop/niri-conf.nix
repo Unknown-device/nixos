@@ -27,7 +27,7 @@
       cursor {
           // Change the theme and size of the cursor as well as set the
           // `XCURSOR_THEME` and `XCURSOR_SIZE` env variables.
-          xcursor-theme "breeze"
+          xcursor-theme "Bibata-Modern-Ice"
           xcursor-size 12
       }
 
