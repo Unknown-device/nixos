@@ -8,7 +8,7 @@
 
   # Don’t forget to apply wallpaper
 
-  stylix.image = ../../hosts/L-E5470/Wallpapers/wallhaven-eyw5qw_3840x1600.png;
+  stylix.image = ../../hosts/L-E5470/Wallpapers/gruvbox_image11.png;
 
   stylix.cursor = {
     package = pkgs.bibata-cursors;
