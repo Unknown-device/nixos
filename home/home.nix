@@ -31,6 +31,7 @@
   home.packages = with pkgs; [
     vim
     nitch
+    bibata-cursors
     zoom-us
     lazygit
     fd
