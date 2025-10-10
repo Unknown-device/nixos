@@ -52,9 +52,7 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
   documentation.man.generateCaches = false;
   environment.systemPackages = with pkgs; [
-    power-profiles-daemon
     home-manager
-    upower
     dig
     app2unit
   ];
