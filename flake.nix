@@ -34,37 +34,36 @@
       inputs.quickshell.follows = "quickshell";
     };
   };
-
-  outputs = {
-    spicetify-nix,
+  outputs = inputs @ {
     nixpkgs,
     home-manager,
-    zen-browser,
+    spicetify-nix,
     stylix,
+    zen-browser,
     nvf,
     ...
-  } @ inputs: let
+  }: let
     system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
+    pkgs = import nixpkgs {inherit system;};
   in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       inherit system;
+      specialArgs = {
+        inherit spicetify-nix stylix;
+      };
+
       modules = [
         ./hosts/L-E5470/L-E5470.nix
         stylix.nixosModules.stylix
         spicetify-nix.nixosModules.default
-        ({pkgs, ...}: {
-          environment.systemPackages = with pkgs; [
-            zen-browser.packages.${pkgs.system}.twilight
+
+        {
+          environment.systemPackages = [
+            zen-browser.packages.${system}.twilight
             inputs.noctalia.packages.${system}.default
           ];
-        })
+        }
       ];
-
-      specialArgs = {
-        inherit spicetify-nix;
-        inherit stylix;
-      };
     };
 
     homeConfigurations."hadi-io" = home-manager.lib.homeManagerConfiguration {
