@@ -27,8 +27,8 @@
       cursor {
           // Change the theme and size of the cursor as well as set the
           // `XCURSOR_THEME` and `XCURSOR_SIZE` env variables.
-          xcursor-theme "Bibata-Modern-Ice"
-          xcursor-size 12
+          xcursor-theme "Bibata-Modern-Classic"
+          xcursor-size 24
       }
 
       input {
