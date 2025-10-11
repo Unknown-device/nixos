@@ -10,7 +10,14 @@
     ../../modules/services/cups.nix
   ];
 
-  services.displayManager.ly.enable = true;
+  services.displayManager.ly = {
+    enable = true;
+    settings = {
+      animate = true;
+      animation = "gameoflife";
+    };
+  };
+
   services.power-profiles-daemon.enable = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.loader.grub.useOSProber = true;
