@@ -14,7 +14,7 @@
     enable = true;
     settings = {
       animate = true;
-      animation = "gameoflife";
+      animation = "cmatrix";
     };
   };
 
