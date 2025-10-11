@@ -12,10 +12,6 @@
 
   services.displayManager.ly = {
     enable = true;
-    settings = {
-      animate = true;
-      animation = "cmatrix";
-    };
   };
 
   services.power-profiles-daemon.enable = true;
