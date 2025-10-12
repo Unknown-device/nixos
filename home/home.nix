@@ -30,6 +30,7 @@
 
   home.packages = with pkgs; [
     vim
+    nemo
     nitch
     bibata-cursors
     zoom-us

@@ -13,7 +13,7 @@
           whichKey.enable = true;
           whichKey.setupOpts.preset = "helix";
         };
-
+        utility.preview.markdownPreview.alwaysAllowPreview = true;
         ui = {
           nvim-ufo.enable = true;
           borders.plugins.which-key.style = "shadow";
@@ -55,6 +55,14 @@
           enableTreesitter = true;
           nix = {
             lsp.server = "nixd";
+            enable = true;
+            format.enable = true;
+          };
+          css = {
+            enable = true;
+            format.enable = true;
+          };
+          html = {
             enable = true;
             format.enable = true;
           };
