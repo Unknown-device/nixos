@@ -8,6 +8,7 @@
           foldlevel = 99;
           foldlevelstart = 99;
           foldenable = true;
+          wrap = false;
         };
         binds = {
           whichKey.enable = true;
