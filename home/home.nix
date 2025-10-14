@@ -2,10 +2,10 @@
   imports = [
     ../modules/desktop/starship.nix
     ../modules/desktop/gh.nix
+    ../modules/desktop/xdg.nix
     ../modules/desktop/git.nix
     #    ../modules/desktop/stylix.nix
     ../modules/desktop/fish.nix
-    ../modules/desktop/niri-conf.nix
     ../modules/desktop/spicetify.nix
     ../modules/desktop/yazi.nix
     ../modules/desktop/kitty.nix

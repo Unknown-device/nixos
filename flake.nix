@@ -11,7 +11,7 @@
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
-    nvf.url = "github:notashelf/nvf?ref=v0.8";
+    nvf.url = "github:notashelf/nvf";
 
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
