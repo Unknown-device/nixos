@@ -4,7 +4,10 @@
   ...
 }: {
   programs.niri.enable = true;
-  xdg.configFile."niri/config.kdl".source = ../../misc/config.kdl;
+  xdg.icons.enable = true;
+  environment.systemPackages = [
+    pkgs.gruvbox-plus-icons
+  ];
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     MOZ_ENABLE_WAYLAND = "1";

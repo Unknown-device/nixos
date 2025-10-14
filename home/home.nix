@@ -4,6 +4,7 @@
     ../modules/desktop/gh.nix
     ../modules/desktop/xdg.nix
     ../modules/desktop/git.nix
+    ../modules/desktop/hm-files.nix
     #    ../modules/desktop/stylix.nix
     ../modules/desktop/fish.nix
     ../modules/desktop/spicetify.nix

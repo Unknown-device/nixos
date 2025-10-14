@@ -52,6 +52,9 @@
           enable = true;
           formatOnSave = true;
         };
+        treesitter = {
+          autotagHtml = true;
+        };
         languages = {
           enableTreesitter = true;
           nix = {
@@ -60,12 +63,12 @@
             format.enable = true;
           };
           css = {
+            treesitter.enable = true;
             enable = true;
-            format.enable = true;
           };
           html = {
             enable = true;
-            format.enable = true;
+            treesitter.enable = true;
           };
         };
       };
