@@ -605,10 +605,9 @@
           Mod+Shift+P { power-off-monitors; }
           Mod+Space { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
           Mod+Ctrl+R { spawn "noctalia-shell" "ipc" "call" "screenRecorder" "toggle"; }
-          Mod+S { spawn "noctalia-shell" "ipc" "call" "sidePanel" "toggle"; }
+          Mod+S { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
           Mod+Comma { spawn "noctalia-shell" "ipc" "call" "settings" "toggle"; }
           Mod+V { spawn "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
           Mod+C { spawn "noctalia-shell" "ipc" "call" "launcher" "calculator"; }
-          Mod+Alt+L { spawn "noctalia-shell" "ipc" "call" "lockScreen" "toggle"; }
+          Mod+L { spawn "noctalia-shell" "ipc" "call" "lockScreen" "toggle"; }
       }
-}

@@ -19,7 +19,6 @@
   boot.loader.grub.useOSProber = true;
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
-
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
@@ -58,6 +57,7 @@
     home-manager
     dig
     app2unit
+    xwayland-satellite
   ];
 
   users.defaultUserShell = pkgs.fish;

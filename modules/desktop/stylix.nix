@@ -6,14 +6,15 @@
   stylix.enable = true;
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
 
-  # Don’t forget to apply wallpaper
-
-  stylix.image = ../../hosts/L-E5470/Wallpapers/gruvbox_image11.png;
-
   stylix.cursor = {
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Ice";
     size = 24;
+  };
+  stylix.icons = {
+    enable = true;
+    package = "gruvbox-plus-icons";
+    dark = "gruvbox-plus-icons";
   };
 
   stylix.fonts = {
