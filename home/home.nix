@@ -29,12 +29,12 @@
 
   home.packages = with pkgs; [
     vim
-    nemo
     nitch
     bibata-cursors
     zoom-us
     lazygit
     fd
+    dragon-drop
     ripgrep
     bat
     ncdu

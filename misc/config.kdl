@@ -609,5 +609,5 @@
           Mod+Comma { spawn "noctalia-shell" "ipc" "call" "settings" "toggle"; }
           Mod+V { spawn "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
           Mod+C { spawn "noctalia-shell" "ipc" "call" "launcher" "calculator"; }
-          Mod+L { spawn "noctalia-shell" "ipc" "call" "lockScreen" "toggle"; }
+          Mod+Shift+L { spawn "noctalia-shell" "ipc" "call" "lockScreen" "toggle"; }
       }
