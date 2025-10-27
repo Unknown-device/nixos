@@ -29,6 +29,10 @@
 
   home.packages = with pkgs; [
     vim
+    steam-run
+    pywalfox-native
+    wpsoffice
+    unzip
     nitch
     bibata-cursors
     zoom-us

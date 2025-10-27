@@ -385,11 +385,10 @@
 
           // Mod-Shift-/, which is usually the same as Mod-?,
           // shows a list of important hotkeys.
-          Mod+Shift+Slash { show-hotkey-overlay; }
+          Mod+Slash { show-hotkey-overlay; }
 
           // Suggested binds for running programs: terminal, app launcher, screen locker.
           Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
-          Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn "noctalia-shell ipc call sessionMenu toggle"; }
 
           // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
           // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
@@ -493,14 +492,6 @@
           // Mod+TouchpadScrollDown { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+"; }
           // Mod+TouchpadScrollUp   { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-"; }
 
-          // You can refer to workspaces by index. However, keep in mind that
-          // niri is a dynamic workspace system, so these commands are kind of
-          // "best effort". Trying to refer to a workspace index bigger than
-          // the current workspace count will instead refer to the bottommost
-          // (empty) workspace.
-          //
-          // For example, with 2 workspaces + 1 empty, indices 3, 4, 5 and so on
-          // will all refer to the 3rd workspace.
           Mod+1 { focus-workspace 1; }
           Mod+2 { focus-workspace 2; }
           Mod+3 { focus-workspace 3; }
@@ -520,15 +511,8 @@
           Mod+Ctrl+8 { move-column-to-workspace 8; }
           Mod+Ctrl+9 { move-column-to-workspace 9; }
 
-          // Alternatively, there are commands to move just a single window:
-          // Mod+Ctrl+1 { move-window-to-workspace 1; }
+          Mod+Tab { focus-workspace-previous; }
 
-          // Switches focus between the current and the previous workspace.
-          // Mod+Tab { focus-workspace-previous; }
-
-          // The following binds move the focused window in and out of a column.
-          // If the window is alone, they will consume it into the nearby column to the side.
-          // If the window is already in a column, they will expel it out.
           Mod+BracketLeft  { consume-or-expel-window-left; }
           Mod+BracketRight { consume-or-expel-window-right; }
 
@@ -544,14 +528,6 @@
           Mod+F { maximize-column; }
           Mod+Shift+F { fullscreen-window; }
 
-          // Expand the focused column to space not taken up by other fully visible columns.
-          // Makes the column "fill the rest of the space".
-
-
-          // Center all fully visible columns on screen.
-
-          // Finer width adjustments.
-          // This command can also:
           // * set width in pixels: "1000"
           // * adjust width in pixels: "-5" or "+5"
           // * set width as a percentage of screen width: "25%"
@@ -561,11 +537,9 @@
           Mod+Minus { set-column-width "-10%"; }
           Mod+Equal { set-column-width "+10%"; }
 
-          // Finer height adjustments when in column with other windows.
           Mod+Shift+Minus { set-window-height "-10%"; }
           Mod+Shift+Equal { set-window-height "+10%"; }
 
-          // Move the focused window between the floating and the tiling layout.
           Mod+Alt+V       { toggle-window-floating; }
           Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
@@ -586,22 +560,12 @@
           Ctrl+Print { screenshot-screen; }
           Alt+Print { screenshot-window; }
 
-          // Applications such as remote-desktop clients and software KVM switches may
-          // request that niri stops processing the keyboard shortcuts defined here
-          // so they may, for example, forward the key presses as-is to a remote machine.
-          // It's a good idea to bind an escape hatch to toggle the inhibitor,
-          // so a buggy application can't hold your session hostage.
-          //
-          // The allow-inhibiting=false property can be applied to other binds as well,
-          // which ensures niri always processes them, even when an inhibitor is active.
+          // escape from vm and kvm input lock
           Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
           // The quit action will show a confirmation dialog to avoid accidental exits.
           Mod+Shift+E { quit; }
-          Ctrl+Alt+Delete { quit; }
 
-          // Powers off the monitors. To turn them back on, do any input like
-          // moving the mouse or pressing any other key.
           Mod+Shift+P { power-off-monitors; }
           Mod+Space { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
           Mod+Ctrl+R { spawn "noctalia-shell" "ipc" "call" "screenRecorder" "toggle"; }
@@ -609,5 +573,5 @@
           Mod+Comma { spawn "noctalia-shell" "ipc" "call" "settings" "toggle"; }
           Mod+V { spawn "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
           Mod+C { spawn "noctalia-shell" "ipc" "call" "launcher" "calculator"; }
-          Mod+Shift+L { spawn "noctalia-shell" "ipc" "call" "lockScreen" "toggle"; }
+          Mod+Shift+L { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
       }
