@@ -1,9 +1,10 @@
-{...}: {
+{
   programs.git = {
     enable = true;
-    settings.userName = "Your Name";
-    settings.userEmail = "youremail@example.com";
-    settings.extraConfig = {
+
+    settings = {
+      user.name = "hadi-io";
+      user.email = "admin@hadi-io.dev";
       init.defaultBranch = "main";
       safe.directory = "/home/hadi-io/.config/nixos";
     };
