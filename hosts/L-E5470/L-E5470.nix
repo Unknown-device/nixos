@@ -2,6 +2,7 @@
   imports = [
     ../../hardware/hardware-configuration.nix
     ../../modules/desktop/niri.nix
+    ../../modules/desktop/gaming.nix
     ../../modules/services/power-profiles-daemon.nix
     ../../modules/desktop/pipewire.nix
     ../../modules/desktop/nh.nix
