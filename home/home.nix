@@ -29,9 +29,8 @@
 
   home.packages = with pkgs; [
     vim
-    steam-run
-    pywalfox-native
-    wpsoffice
+    nemo
+    ffmpeg
     unzip
     nitch
     bibata-cursors
