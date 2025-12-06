@@ -11,6 +11,7 @@
     ../modules/desktop/alias.nix
     ../modules/desktop/nvf.nix
     ../modules/desktop/zellij.nix
+    ../modules/desktop/prism.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -30,8 +31,14 @@
   home.packages = with pkgs; [
     vim
     nemo
+    gtk3
+    gsettings-desktop-schemas
+    dconf
+    openjdk
+    mpv
     ffmpeg
     unzip
+    steam-run
     nitch
     bibata-cursors
     zoom-us
