@@ -9,6 +9,8 @@
           foldlevelstart = 99;
           foldenable = true;
           wrap = false;
+          tabstop = 4;
+          shiftwidth = 4;
         };
         binds = {
           whichKey.enable = true;
