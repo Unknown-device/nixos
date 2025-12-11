@@ -14,6 +14,8 @@
   services.displayManager.ly = {
     enable = true;
   };
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.allowReboot = true;
 
   services.power-profiles-daemon.enable = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -60,6 +62,9 @@
     app2unit
     xwayland-satellite
     bluez-tools
+    gsettings-desktop-schemas
+    dconf
+    openjdk
   ];
 
   users.defaultUserShell = pkgs.fish;
