@@ -16,6 +16,11 @@
           clip-to-geometry true
       }
 
+    window-rule {
+    match app-id="Alacritty"
+    open-maximized false
+    }
+
       layer-rule {
           match namespace="^quickshell-overview$"
           place-within-backdrop true

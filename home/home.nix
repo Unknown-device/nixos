@@ -12,6 +12,7 @@
     ../modules/desktop/nvf.nix
     ../modules/desktop/zellij.nix
     ../modules/desktop/prism.nix
+    ../modules/services/kanata.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -32,14 +33,11 @@
     vim
     nemo
     gtk3
-    gsettings-desktop-schemas
-    dconf
-    openjdk
+    spotify-tui
     mpv
     ffmpeg
     unzip
     steam-run
-    nitch
     bibata-cursors
     zoom-us
     lazygit
@@ -55,6 +53,7 @@
     neovim
     git
     pavucontrol
+    prismlauncher
   ];
 
   home.file = {
