@@ -14,11 +14,18 @@
       window-rule {
           geometry-corner-radius 12
           clip-to-geometry true
+          default-column-width { proportion 0.75; }
       }
 
     window-rule {
-    match app-id="Alacritty"
-    open-maximized false
+    match app-id="org.gnome.Calculator"
+    open-floating true
+        default-column-width { proportion 0.4; }
+    default-window-height { fixed 200; }
+    }
+    window-rule {
+    match app-id="zen-twilight"
+    open-maximized true
     }
 
       layer-rule {
@@ -402,6 +409,9 @@
           // Example volume keys mappings for PipeWire & WirePlumber.
           // The allow-when-locked=true property makes them work even when the session is locked.
           // Using spawn-sh allows to pass multiple arguments together with the command.
+          Mod+Right {spawn-sh "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next";}
+          Mod+Left {spawn-sh "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous";}
+          Mod+Space+Shift {spawn-sh "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause";}
           XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
           XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
           XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }

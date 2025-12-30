@@ -60,7 +60,7 @@
         languages = {
           enableTreesitter = true;
           nix = {
-            lsp.server = "nixd";
+            lsp.servers = ["nixd"];
             enable = true;
             format.enable = true;
           };

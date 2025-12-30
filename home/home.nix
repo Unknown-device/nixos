@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ../modules/desktop/starship.nix
+    ../modules/desktop/firefox.nix
     ../modules/desktop/xdg.nix
     ../modules/desktop/git.nix
     ../modules/desktop/hm-files.nix
@@ -12,7 +13,6 @@
     ../modules/desktop/nvf.nix
     ../modules/desktop/zellij.nix
     ../modules/desktop/prism.nix
-    ../modules/services/kanata.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -33,11 +33,12 @@
     vim
     nemo
     gtk3
-    spotify-tui
-    mpv
     ffmpeg
+    zoho-mail-desktop
     unzip
     steam-run
+    gnome-calculator
+    spotify-cli-linux
     bibata-cursors
     zoom-us
     lazygit
