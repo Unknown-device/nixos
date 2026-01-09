@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ../modules/desktop/starship.nix
-    ../modules/desktop/firefox.nix
     ../modules/desktop/xdg.nix
     ../modules/desktop/git.nix
     ../modules/desktop/hm-files.nix
@@ -30,7 +29,10 @@
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
+    keepassxc
     vim
+    zip
+    kdePackages.ktouch
     nemo
     gtk3
     ffmpeg
