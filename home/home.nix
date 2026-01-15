@@ -31,6 +31,9 @@
   home.packages = with pkgs; [
     keepassxc
     vim
+    chromium
+    nodejs_25
+    vlc
     zip
     kdePackages.ktouch
     nemo
