@@ -29,21 +29,18 @@
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
-    keepassxc
     vim
+    unrar
+    bottles
     chromium
     nodejs_25
     vlc
     zip
-    kdePackages.ktouch
     nemo
     gtk3
     ffmpeg
-    zoho-mail-desktop
     unzip
     steam-run
-    gnome-calculator
-    spotify-cli-linux
     bibata-cursors
     zoom-us
     lazygit
@@ -55,8 +52,8 @@
     fzf
     btop
     eza
-    vesktop
     neovim
+    vesktop
     git
     pavucontrol
     prismlauncher

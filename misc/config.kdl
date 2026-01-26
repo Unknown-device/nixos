@@ -1,28 +1,14 @@
-      // This config is in the KDL format: https://kdl.dev
-      // "/-" comments out the following node.
-      // Check the wiki for a full description of the configuration:
-      // https://yalter.github.io/niri/Configuration:-Introduction
-
-      // Input device configuration.
-      // Find the full list of options on the wiki:
-      // https://yalter.github.io/niri/Configuration:-Input
       debug {
           honor-xdg-activation-with-invalid-serial
       }
 
 
       window-rule {
-          geometry-corner-radius 12
+          geometry-corner-radius 3
           clip-to-geometry true
           default-column-width { proportion 0.75; }
       }
 
-    window-rule {
-    match app-id="org.gnome.Calculator"
-    open-floating true
-        default-column-width { proportion 0.4; }
-    default-window-height { fixed 200; }
-    }
     window-rule {
     match app-id="zen-twilight"
     open-maximized true
@@ -34,8 +20,6 @@
       }
 
       cursor {
-          // Change the theme and size of the cursor as well as set the
-          // `XCURSOR_THEME` and `XCURSOR_SIZE` env variables.
           xcursor-theme "Bibata-Modern-Classic"
           xcursor-size 24
       }
@@ -43,25 +27,12 @@
       input {
           keyboard {
               xkb {
-                  // You can set rules, model, layout, variant and options.
-                  // For more information, see xkeyboard-config(7).
-
-                  // For example:
-                  // layout "us,ru"
-                  // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
-
-                  // If this section is empty, niri will fetch xkb settings
-                  // from org.freedesktop.locale1. You can control these using
-                  // localectl set-x11-keymap.
               }
 
               // Enable numlock on startup, omitting this setting disables it.
               numlock
           }
 
-          // Next sections include libinput settings.
-          // Omitting settings disables them, or leaves them at their default values.
-          // All commented-out settings here are examples, not defaults.
           touchpad {
               // off
               tap
@@ -119,7 +90,7 @@
           // for the resolution.
           // If the mode is omitted altogether or is invalid, niri will pick one automatically.
           // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-          mode "1920x1080@120.030"
+          mode "1920x1080"
 
           // You can use integer or fractional scale, for example use 1.5 for 150% scale.
           scale 2
@@ -147,7 +118,7 @@
       // https://yalter.github.io/niri/Configuration:-Layout
       layout {
           // Set gaps around windows in logical pixels.
-          gaps 8
+          gaps 3
 
           // When to center a column when changing focus, options are:
           // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -195,7 +166,7 @@
               // off
 
               // How many logical pixels the ring extends out from the windows.
-              width 2
+              width 1
 
               // Colors can be set in a variety of ways:
               // - CSS named colors: "red"
@@ -209,7 +180,6 @@
               //
               // The focus ring only draws around the active window, so the only place
               // where you can see its inactive-color is on other monitors.
-              inactive-color "#505050"
 
               // You can also use gradients. They take precedence over solid colors.
               // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
@@ -377,12 +347,6 @@
           // block-out-from "screencast"
       }
 
-      // Example: enable rounded corners for all windows.
-      // (This example rule is commented out with a "/-" in front.)
-      /-window-rule {
-          geometry-corner-radius 12
-          clip-to-geometry true
-      }
 
       binds {
           // Keys consist of modifiers separated by + signs, followed by an XKB key name
