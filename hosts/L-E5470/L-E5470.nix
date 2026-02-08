@@ -7,7 +7,6 @@
     ../../modules/services/kanata.nix
     ../../modules/desktop/pipewire.nix
     ../../modules/desktop/nh.nix
-    ../../modules/desktop/stylix.nix
     ../../modules/desktop/alias.nix
     ../../modules/services/cups.nix
   ];

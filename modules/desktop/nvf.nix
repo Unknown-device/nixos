@@ -51,6 +51,9 @@
           noice.enable = true;
           colorizer.enable = true;
         };
+        theme.name = "gruvbox";
+        theme.enable = true;
+        theme.style = "dark";
 
         tabline.nvimBufferline.enable = true;
         statusline.lualine.enable = true;
@@ -121,6 +124,7 @@
           lightbulb.enable = true;
           trouble.enable = true;
         };
+        lsp.null-ls.enable = true;
 
         ## --------------------------------------------------
         ## Languages
@@ -149,17 +153,15 @@
 
         utility = {
           preview.markdownPreview.alwaysAllowPreview = true;
-          vim-wakatime.enable = true;
+        };
+
+        presence = {
+          neocord.enable = true;
         };
 
         ## --------------------------------------------------
         ## Theme
         ## --------------------------------------------------
-        theme = {
-          enable = true;
-          name = "gruvbox";
-          style = "dark";
-        };
       };
     };
   };

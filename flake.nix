@@ -1,6 +1,4 @@
 {
-  description = "Merged NixOS + Home Manager flake with Noctalia";
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -18,20 +16,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    quickshell = {
-      url = "github:outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.quickshell.follows = "quickshell";
     };
   };
   outputs = inputs @ {
@@ -48,19 +35,13 @@
   in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = {
-        inherit spicetify-nix stylix;
-      };
 
       modules = [
         ./hosts/L-E5470/L-E5470.nix
-        stylix.nixosModules.stylix
-        spicetify-nix.nixosModules.default
 
         {
           environment.systemPackages = [
             zen-browser.packages.${system}.twilight
-            inputs.noctalia.packages.${system}.default
           ];
         }
       ];
@@ -73,6 +54,7 @@
         nvf.homeManagerModules.default
         ./home/home.nix
         spicetify-nix.homeManagerModules.default
+        stylix.homeModules.stylix
       ];
 
       extraSpecialArgs = {
