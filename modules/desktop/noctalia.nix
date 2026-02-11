@@ -1,8 +1,14 @@
-{ pkgs, inputs, config, ... }:
 {
-  # install pacakge
-  environment.systemPackages = with pkgs; [
-    inputs.noctalia.packages.${system}.default
-    # ... maybe other stuff
+  pkgs,
+  inputs,
+  lib,
+  ...
+}: {
+  imports = [
+    inputs.noctalia.homeModules.default
   ];
+  programs.noctalia-shell = {
+    enable = true;
+    settings = lib.mkForce ../../misc/noctalia.json;
+  };
 }

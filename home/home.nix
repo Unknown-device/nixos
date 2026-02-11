@@ -6,6 +6,7 @@
     ../modules/desktop/hm-files.nix
     ../modules/desktop/fish.nix
     ../modules/desktop/stylix.nix
+    ../modules/desktop/noctalia.nix
 
     ../modules/desktop/spicetify.nix
     ../modules/desktop/yazi.nix
@@ -31,10 +32,11 @@
 
   home.packages = with pkgs; [
     vim
-    noctalia-shell
+    libreoffice-fresh
     rar
     glib
     bottles
+    steam
     chromium
     nodejs_25
     vlc
@@ -44,7 +46,6 @@
     ffmpeg
     kdePackages.kget
     unzip
-    steam-run
     bibata-cursors
     zoom-us
     lazygit

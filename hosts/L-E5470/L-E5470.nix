@@ -17,6 +17,7 @@
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = true;
   environment.sessionVariables.XDG_DATA_DIRS = ["${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}" "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"];
+  nix.settings.auto-optimise-store = true;
 
   services.power-profiles-daemon.enable = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -65,6 +66,7 @@
     bluez-tools
     gsettings-desktop-schemas
     dconf
+    ntfs3g
     openjdk
   ];
 

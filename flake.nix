@@ -6,7 +6,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    nix-alien.url = "github:thiagokokada/nix-alien";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
     nvf.url = "github:notashelf/nvf";
@@ -39,9 +43,11 @@
       modules = [
         ./hosts/L-E5470/L-E5470.nix
 
+        stylix.nixosModules.stylix
         {
           environment.systemPackages = [
             zen-browser.packages.${system}.twilight
+            inputs.nix-alien.packages.${system}.nix-alien
           ];
         }
       ];
@@ -59,6 +65,7 @@
 
       extraSpecialArgs = {
         inherit spicetify-nix;
+        inherit inputs;
       };
     };
   };
