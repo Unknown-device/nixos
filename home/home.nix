@@ -32,10 +32,10 @@
 
   home.packages = with pkgs; [
     vim
+    faugus-launcher
     libreoffice-fresh
     rar
     glib
-    bottles
     steam
     chromium
     nodejs_25

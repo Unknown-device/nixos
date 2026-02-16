@@ -140,7 +140,6 @@
           };
 
           css.enable = true;
-          html.enable = true;
           json.enable = true;
           markdown.enable = true;
           nim.enable = true;

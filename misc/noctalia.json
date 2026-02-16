@@ -1,7 +1,7 @@
 {
   "settingsVersion": 46,
   "bar": {
-    "barType": "framed",
+    "barType": "simple",
     "position": "left",
     "monitors": [],
     "density": "mini",
@@ -103,7 +103,7 @@
           "colorizeSystemIcon": "secondary",
           "customIconPath": "",
           "enableColorization": false,
-          "icon": "noctalia",
+          "icon": "Cyberpunk",
           "id": "ControlCenter",
           "useDistroLogo": true
         }
@@ -447,7 +447,7 @@
   },
   "colorSchemes": {
     "useWallpaperColors": false,
-    "predefinedScheme": "Gruvbox",
+    "predefinedScheme": "Cyberpunk",
     "darkMode": true,
     "schedulingMode": "off",
     "manualSunrise": "06:30",
