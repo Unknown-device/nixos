@@ -7,12 +7,11 @@
     ../modules/desktop/fish.nix
     ../modules/desktop/stylix.nix
     ../modules/desktop/noctalia.nix
-
     ../modules/desktop/spicetify.nix
-    ../modules/desktop/yazi.nix
     ../modules/desktop/kitty.nix
     ../modules/desktop/alias.nix
     ../modules/desktop/nvf.nix
+    ../modules/desktop/lazyvim.nix
     ../modules/desktop/prism.nix
   ];
 
@@ -32,25 +31,23 @@
 
   home.packages = with pkgs; [
     vim
-    faugus-launcher
+    nmap
     libreoffice-fresh
+    bottles
     rar
     glib
     steam
     chromium
-    nodejs_25
     vlc
     zip
     nemo
     gtk3
     ffmpeg
-    kdePackages.kget
     unzip
     bibata-cursors
     zoom-us
     lazygit
     fd
-    dragon-drop
     ripgrep
     bat
     ncdu

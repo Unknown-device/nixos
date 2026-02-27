@@ -6,7 +6,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-alien.url = "github:thiagokokada/nix-alien";
+
+    lazyvim.url = "github:pfassina/lazyvim-nix";
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -32,6 +33,7 @@
     stylix,
     zen-browser,
     nvf,
+    lazyvim,
     ...
   }: let
     system = "x86_64-linux";
@@ -61,6 +63,7 @@
         ./home/home.nix
         spicetify-nix.homeManagerModules.default
         stylix.homeModules.stylix
+        lazyvim.homeManagerModules.default
       ];
 
       extraSpecialArgs = {

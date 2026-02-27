@@ -1,15 +1,11 @@
 {
   pkgs,
   inputs,
-  lib,
   ...
 }: {
-  imports = [
-    inputs.noctalia.homeModules.default
+  # install package
+  home.packages = with pkgs; [
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # ... maybe other stuff
   ];
-  programs.noctalia-shell = {
-    enable = true;
-    settings = lib.mkForce ../../misc/noctalia.json;
-    colors = lib.mkForce ../../misc/colors.json;
-  };
 }

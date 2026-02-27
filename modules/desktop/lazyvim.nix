@@ -1,0 +1,3 @@
+{
+  programs.lazyvim.enable = true;
+}
