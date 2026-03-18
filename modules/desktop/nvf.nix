@@ -33,11 +33,6 @@
           setupOpts.preset = "helix";
         };
 
-        maps.normal."<leader>e" = {
-          action = "<cmd>lua require('mini.files').open()<cr>";
-          desc = "Open mini.files";
-        };
-
         ## --------------------------------------------------
         ## UI
         ## --------------------------------------------------
@@ -58,19 +53,10 @@
         tabline.nvimBufferline.enable = true;
         statusline.lualine.enable = true;
 
-        visuals = {
-          fidget-nvim.enable = true;
-          cellular-automaton.enable = true;
-        };
-
         ## --------------------------------------------------
         ## Editing behavior
         ## --------------------------------------------------
         autopairs.nvim-autopairs.enable = true;
-
-        comments.comment-nvim.enable = true;
-
-        spellcheck.enable = true;
 
         ## --------------------------------------------------
         ## Telescope
@@ -120,11 +106,9 @@
         ## --------------------------------------------------
         lsp = {
           enable = true;
-          formatOnSave = true;
-          lightbulb.enable = true;
+          formatOnSave = false;
           trouble.enable = true;
         };
-        lsp.null-ls.enable = true;
 
         ## --------------------------------------------------
         ## Languages
@@ -140,9 +124,11 @@
           };
 
           css.enable = true;
+          html.enable = true;
           json.enable = true;
           markdown.enable = true;
-          nim.enable = true;
+          clang.enable = true;
+          rust.enable = true; 
           ts.enable = true;
         };
 
@@ -151,16 +137,12 @@
         ## --------------------------------------------------
 
         utility = {
-          preview.markdownPreview.alwaysAllowPreview = true;
+          ccc.enable = true;
+        };
+        notes = {
+          todo-comments.enable = true;
         };
 
-        presence = {
-          neocord.enable = true;
-        };
-
-        ## --------------------------------------------------
-        ## Theme
-        ## --------------------------------------------------
       };
     };
   };

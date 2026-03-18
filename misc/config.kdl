@@ -78,7 +78,7 @@ cursor {
       // Find more information on the wiki:
       // https://yalter.github.io/niri/Configuration:-Outputs
       // Remember to uncomment the node by removing "/-"!
-      /-output "eDP-1" {
+      output "HDMI-A-1" {
           // Uncomment this line to disable this output.
           // off
 
@@ -88,10 +88,9 @@ cursor {
           // for the resolution.
           // If the mode is omitted altogether or is invalid, niri will pick one automatically.
           // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-          mode "1920x1080"
+          mode "1920x1080@60.000"
 
           // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-          scale 2
 
           // Transform allows to rotate the output counter-clockwise, valid values are:
           // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
@@ -106,7 +105,37 @@ cursor {
           // so to put another output directly adjacent to it on the right, set its x to 1920.
           // If the position is unset or results in an overlap, the output is instead placed
           // automatically.
-          position x=1280 y=0
+    position x=0 y=0
+      }
+
+      output "eDP-1" {
+          // Uncomment this line to disable this output.
+          // off
+
+          // Resolution and, optionally, refresh rate of the output.
+          // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
+          // If the refresh rate is omitted, niri will pick the highest refresh rate
+          // for the resolution.
+          // If the mode is omitted altogether or is invalid, niri will pick one automatically.
+          // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
+          mode "1366x768@60"
+
+          // You can use integer or fractional scale, for example use 1.5 for 150% scale.
+
+          // Transform allows to rotate the output counter-clockwise, valid values are:
+          // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
+          transform "normal"
+
+          // Position of the output in the global coordinate space.
+          // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
+          // The cursor can only move between directly adjacent outputs.
+          // Output scale and rotation has to be taken into account for positioning:
+          // outputs are sized in logical, or scaled, pixels.
+          // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
+          // so to put another output directly adjacent to it on the right, set its x to 1920.
+          // If the position is unset or results in an overlap, the output is instead placed
+          // automatically.
+    position x=1920 y=0
       }
 
       spawn-at-startup "noctalia-shell"
@@ -194,34 +223,6 @@ cursor {
               //
               // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
           }
-
-          // You can also add a border. It's similar to the focus ring, but always visible.
-          border {
-              // The settings are the same as for the focus ring.
-              // If you enable the border, you probably want to disable the focus ring.
-              off
-
-              width 1
-              active-color "#ffc87f"
-              inactive-color "#505050"
-
-              // Color of the border around windows that request your attention.
-              urgent-color "#9b0000"
-
-              // Gradients can use a few different interpolation color spaces.
-              // For example, this is a pastel rainbow gradient via in="oklch longer hue".
-              //
-              // active-gradient from="#e5989b" to="#ffb4a2" angle=45 relative-to="workspace-view" in="oklch longer hue"
-
-              // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
-          }
-
-          struts {
-              // left 64
-              // right 64
-              // top 64
-              // bottom 64
-          }
       }
 
       hotkey-overlay {
@@ -258,7 +259,6 @@ cursor {
           Mod+Slash { show-hotkey-overlay; }
 
           Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
-
           Mod+Right {spawn-sh "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next";}
           Mod+Left {spawn-sh "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous";}
           Mod+Shift+Slash {spawn-sh "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause";}
@@ -283,6 +283,23 @@ cursor {
           Mod+Ctrl+J     { move-window-down; }
           Mod+Ctrl+K     { move-window-up; }
           Mod+Ctrl+L     { move-column-right; }
+    Mod+Shift+Left  { focus-monitor-left; }
+    Mod+Shift+Down  { focus-monitor-down; }
+    Mod+Shift+Up    { focus-monitor-up; }
+    Mod+Shift+Right { focus-monitor-right; }
+    Mod+Shift+H     { focus-monitor-left; }
+    Mod+Shift+J     { focus-monitor-down; }
+    Mod+Shift+K     { focus-monitor-up; }
+    Mod+Shift+L     { focus-monitor-right; }
+
+    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
 
           Mod+U              { focus-workspace-down; }
           Mod+I              { focus-workspace-up; }
@@ -378,12 +395,12 @@ cursor {
           // The quit action will show a confirmation dialog to avoid accidental exits.
           Mod+Shift+E { quit; }
 
-          Mod+Shift+P { power-off-monitors; }
           Mod+Space { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
           Mod+Ctrl+R { spawn "noctalia-shell" "ipc" "call" "screenRecorder" "toggle"; }
           Mod+S { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
           Mod+Comma { spawn "noctalia-shell" "ipc" "call" "settings" "toggle"; }
           Mod+V { spawn "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
           Mod+C { spawn "noctalia-shell" "ipc" "call" "launcher" "calculator"; }
-          Mod+Shift+L { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+          Mod+Alt+L { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+    Mod+Shift+P { power-off-monitors; }
       }

@@ -11,7 +11,6 @@
     ../modules/desktop/kitty.nix
     ../modules/desktop/alias.nix
     ../modules/desktop/nvf.nix
-    ../modules/desktop/lazyvim.nix
     ../modules/desktop/prism.nix
   ];
 
@@ -31,6 +30,9 @@
 
   home.packages = with pkgs; [
     vim
+    openvpn
+    gpu-screen-recorder
+    zig
     nmap
     libreoffice-fresh
     bottles

@@ -49,7 +49,6 @@
         {
           environment.systemPackages = [
             zen-browser.packages.${system}.twilight
-            inputs.nix-alien.packages.${system}.nix-alien
           ];
         }
       ];
