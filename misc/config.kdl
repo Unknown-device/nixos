@@ -257,18 +257,17 @@ cursor {
 
       binds {
           Mod+Slash { show-hotkey-overlay; }
-
           Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
           Mod+Right {spawn-sh "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next";}
           Mod+Left {spawn-sh "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous";}
-          Mod+Shift+Slash {spawn-sh "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause";}
-          XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
-          XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
-          XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+          Mod+Shift+Slash allow-when-locked=true  {spawn-sh "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause";}
+          Mod+Up allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
+          Mod+Down allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+          Mod+M       allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
           XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
-          XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-          XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+          Mod+Shift+Up allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+          Mod+Shift+Down allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
 
           Mod+O repeat=false { toggle-overview; }
 
@@ -283,19 +282,11 @@ cursor {
           Mod+Ctrl+J     { move-window-down; }
           Mod+Ctrl+K     { move-window-up; }
           Mod+Ctrl+L     { move-column-right; }
-    Mod+Shift+Left  { focus-monitor-left; }
-    Mod+Shift+Down  { focus-monitor-down; }
-    Mod+Shift+Up    { focus-monitor-up; }
-    Mod+Shift+Right { focus-monitor-right; }
     Mod+Shift+H     { focus-monitor-left; }
     Mod+Shift+J     { focus-monitor-down; }
     Mod+Shift+K     { focus-monitor-up; }
     Mod+Shift+L     { focus-monitor-right; }
 
-    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
-    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
-    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
-    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
     Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
     Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
     Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
@@ -378,7 +369,6 @@ cursor {
           // Toggle tabbed column display mode.
           // Windows in this column will appear as vertical tabs,
           // rather than stacked on top of each other.
-          Mod+W { toggle-column-tabbed-display; }
 
           // Actions to switch layouts.
           // Note: if you uncomment these, make sure you do NOT have
@@ -396,11 +386,13 @@ cursor {
           Mod+Shift+E { quit; }
 
           Mod+Space { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
-          Mod+Ctrl+R { spawn "noctalia-shell" "ipc" "call" "screenRecorder" "toggle"; }
           Mod+S { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
           Mod+Comma { spawn "noctalia-shell" "ipc" "call" "settings" "toggle"; }
           Mod+V { spawn "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
           Mod+C { spawn "noctalia-shell" "ipc" "call" "launcher" "calculator"; }
           Mod+Alt+L { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+Mod+W {spawn "zen-twilight";}
+Mod+E {spawn "nemo";}
+Mod+T {"spawn" "noctalia-shell" "ipc" "call" "plugin:todo" "togglePanel";}
     Mod+Shift+P { power-off-monitors; }
       }

@@ -58,7 +58,7 @@
 
   system.stateVersion = "25.05";
   nix.settings.experimental-features = ["nix-command" "flakes"];
-  documentation.man.generateCaches = false;
+  documentation.man.cache.enable = false;
   environment.systemPackages = with pkgs; [
     home-manager
     dig
