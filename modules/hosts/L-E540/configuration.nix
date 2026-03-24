@@ -1,16 +1,10 @@
-{pkgs, ...}: {
-  imports = [
-    ../../hardware/hardware-configuration.nix
-    ../../modules/desktop/nix.nix
-    ../../modules/desktop/niri.nix
-    ../../modules/desktop/gaming.nix
-    ../../modules/services/power-profiles-daemon.nix
-    ../../modules/services/kanata.nix
-    ../../modules/desktop/pipewire.nix
-    ../../modules/desktop/nh.nix
-    ../../modules/desktop/alias.nix
-    ../../modules/services/cups.nix
-  ];
+{ self, inputs, ... }: {
+
+  flake.nixosModules.L-E540Configuration = { pkgs, lib, ... }: {
+    # import any other modules from here
+    imports = [
+      self.nixosModules.L-E540Hardware
+    ];
 
   services.displayManager.ly = {
     enable = true;
@@ -74,6 +68,7 @@ virtualisation.spiceUSBRedirection.enable = true;
     dconf
     ntfs3g
     openjdk
+      niri
   ];
 
   users.defaultUserShell = pkgs.fish;
@@ -92,4 +87,8 @@ virtualisation.spiceUSBRedirection.enable = true;
       };
     };
   };
+  
+    # ...
+  };
+
 }
