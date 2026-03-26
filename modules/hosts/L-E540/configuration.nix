@@ -5,7 +5,6 @@
     imports = [
       self.nixosModules.L-E540Hardware
       self.nixosModules.caps-esc
-      self.nixosModules.nh
 
       self.nixosModules.firefox
     ];
@@ -104,7 +103,7 @@ bibata-cursors
         fd
         dust
         ripgrep
-        neofetch
+fastfetch
         tree-sitter
         imagemagick
         imv
@@ -118,6 +117,7 @@ bibata-cursors
 programs.niri.enable = true;
 programs.niri.package = self.packages."${pkgs.system}".niri; 
 programs.zoxide.enable = true;
+
 
   hardware.bluetooth = {
     enable = true;
