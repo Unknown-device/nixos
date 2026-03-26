@@ -40,21 +40,24 @@
           trackpoint = {};
         };
 
-        output = {
-          "HDMI-A-1" = {
-            mode = "1920x1080@60.000";
-            transform = "normal";
-            position = { x = 0; y = 0; };
-          };
+outputs = {
+  "HDMI-A-1" = {
+    mode = "1920x1080@60.000";
+    transform = "normal";
+    position = {
+      _attrs = { x = 0; y = 0; };
+    };
+  };
 
-          "eDP-1" = {
-            mode = "1366x768@60";
-            transform = "normal";
-            position = { x = 1920; y = 0; };
-          };
-        };
-
-        spawn-at-startup = [ "noctalia-shell" ];
+  "eDP-1" = {
+    mode = "1366x768@60";
+    transform = "normal";
+    position = {
+      _attrs = { x = 1920; y = 0; };
+    };
+  };
+};
+        spawn-at-startup = [ noctaliaExe ];
 
         layout = {
           gaps = 3;
@@ -74,18 +77,11 @@
           };
         };
 
-        animations = {
-          workspace-switch = {
-            # IMPORTANT: must serialize inline
-            spring = lib.mkForce "damping-ratio=1.0 stiffness=1000 epsilon=0.0001";
-          };
-        };
-
         hotkey-overlay.skip-at-startup = null;
 
         screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
 
-        # IMPORTANT: match must be inline → use raw strings
+        # ✅ FIXED window rules
         window-rules = [
           {
             geometry-corner-radius = 3;
@@ -93,18 +89,28 @@
             default-column-width = { proportion = 0.75; };
           }
           {
-            match = lib.mkForce ''app-id="zen-twilight"'';
+            matches = [
+              { app-id = "firefox"; }
+            ];
             open-maximized = true;
           }
           {
-            match = lib.mkForce ''app-id="firefox$" title="^Picture-in-Picture$"'';
+            matches = [
+              {
+                app-id = "firefox$";
+                title = "^Picture-in-Picture$";
+              }
+            ];
             open-floating = true;
           }
         ];
 
+        # ✅ FIXED layer rules
         layer-rules = [
           {
-            match = lib.mkForce ''namespace="^quickshell-overview$"'';
+            matches = [
+              { namespace = "^quickshell-overview$"; }
+            ];
             place-within-backdrop = true;
           }
         ];
@@ -113,7 +119,7 @@
           "Mod+Slash".show-hotkey-overlay = null;
 
           "Mod+Return" = {
-            hotkey-overlay-title = "Open a Terminal: kitty";
+            _attrs.hotkey-overlay-title = "Open a Terminal: kitty";
             spawn = config.terminal;
           };
 
@@ -121,16 +127,27 @@
           "Mod+Left".spawn-sh = "dbus-send --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous";
 
           "Mod+Shift+Slash" = {
-            allow-when-locked = true;
+            _attrs.allow-when-locked = true;
             spawn-sh = "dbus-send --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause";
           };
 
-          "Mod+Up" = { allow-when-locked = true; spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; };
-          "Mod+Down" = { allow-when-locked = true; spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; };
-          "Mod+M" = { allow-when-locked = true; spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; };
+          "Mod+Up" = {
+            _attrs.allow-when-locked = true;
+            spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+";
+          };
+
+          "Mod+Down" = {
+            _attrs.allow-when-locked = true;
+            spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-";
+          };
+
+          "Mod+M" = {
+            _attrs.allow-when-locked = true;
+            spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          };
 
           "XF86AudioMicMute" = {
-            allow-when-locked = true;
+            _attrs.allow-when-locked = true;
             spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
           };
 
@@ -184,22 +201,22 @@
           "Mod+Shift+S".screenshot = null;
 
           "Mod+Escape" = {
-            allow-inhibiting = false;
+            _attrs.allow-inhibiting = false;
             toggle-keyboard-shortcuts-inhibit = null;
           };
 
           "Mod+Shift+E".quit = null;
 
-          "Mod+Space".spawn = [ "noctalia-shell" "ipc" "call" "launcher" "toggle" ];
-          "Mod+S".spawn = [ "noctalia-shell" "ipc" "call" "sessionMenu" "toggle" ];
-          "Mod+Comma".spawn = [ "noctalia-shell" "ipc" "call" "settings" "toggle" ];
-          "Mod+V".spawn = [ "noctalia-shell" "ipc" "call" "launcher" "clipboard" ];
-          "Mod+C".spawn = [ "noctalia-shell" "ipc" "call" "launcher" "calculator" ];
-          "Mod+Alt+L".spawn = [ "noctalia-shell" "ipc" "call" "lockScreen" "lock" ];
+          "Mod+Space".spawn-sh = [ "${noctaliaExe} ipc call launcher toggle" ];
+          "Mod+S".spawn-sh = [ "${noctaliaExe} ipc call sessionMenu toggle" ];
+          "Mod+Comma".spawn-sh = [" ${noctaliaExe} ipc call settings toggle "];
+         "Mod+V".spawn-sh = [" ${noctaliaExe} ipc call launcher clipboard "];
+         "Mod+C".spawn-sh = [" ${noctaliaExe} ipc call launcher calculator "];
+          "Mod+Alt+L".spawn-sh = [" ${noctaliaExe} ipc call lockScreen lock "];
 
-          "Mod+W".spawn = "zen-twilight";
+          "Mod+W".spawn = "firefox";
           "Mod+E".spawn = "nemo";
-          "Mod+T".spawn = [ "noctalia-shell" "ipc" "call" "plugin:todo" "togglePanel" ];
+          "Mod+T".spawn-sh = [ "${noctaliaExe} ipc call plugin:todo togglePanel" ];
 
           "Mod+Shift+P".power-off-monitors = null;
         };

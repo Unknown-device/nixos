@@ -4,13 +4,30 @@
     # import any other modules from here
     imports = [
       self.nixosModules.L-E540Hardware
+      self.nixosModules.caps-esc
+      self.nixosModules.nh
+
+      self.nixosModules.firefox
     ];
 
   services.displayManager.ly = {
     enable = true;
   };
-  system.autoUpgrade.enable = true;
-  system.autoUpgrade.allowReboot = true;
+
+    fonts.packages = with pkgs; [
+      nerd-fonts.jetbrains-mono
+      ubuntu-sans
+      cm_unicode
+      corefonts
+      unifont
+    ];
+
+    fonts.fontconfig.defaultFonts = {
+      serif = ["Ubuntu Sans"];
+      sansSerif = ["Ubuntu Sans"];
+      monospace = ["JetBrainsMono Nerd Font"];
+    };
+ 
   environment.sessionVariables.XDG_DATA_DIRS = ["${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}" "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"];
   nix.settings.auto-optimise-store = true;
 
@@ -59,7 +76,7 @@ virtualisation.spiceUSBRedirection.enable = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
   documentation.man.cache.enable = false;
   environment.systemPackages = with pkgs; [
-    home-manager
+git
     dig
     app2unit
     xwayland-satellite
@@ -67,12 +84,40 @@ virtualisation.spiceUSBRedirection.enable = true;
     gsettings-desktop-schemas
     dconf
     ntfs3g
+vim
+firefox
+kitty
+      vesktop
+bibata-cursors
     openjdk
-      niri
+        file
+        unzip
+        zip
+        p7zip
+        wget
+        killall
+        sshfs
+        fzf
+        htop
+        btop
+        eza
+        fd
+        dust
+        ripgrep
+        neofetch
+        tree-sitter
+        imagemagick
+        imv
+        ffmpeg-full
+        yt-dlp
+        lazygit
   ];
 
   users.defaultUserShell = pkgs.fish;
   programs.fish.enable = true;
+programs.niri.enable = true;
+programs.niri.package = self.packages."${pkgs.system}".niri; 
+programs.zoxide.enable = true;
 
   hardware.bluetooth = {
     enable = true;
@@ -88,7 +133,10 @@ virtualisation.spiceUSBRedirection.enable = true;
     };
   };
   
-    # ...
-  };
+nix.settings = {
+  extra-substituters = [ "https://noctalia.cachix.org" "https://nix-community.cachix.org" ];
+  extra-trusted-public-keys = [ "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
+};
 
+  };
 }
