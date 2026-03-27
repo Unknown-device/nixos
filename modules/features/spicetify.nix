@@ -1,7 +1,7 @@
 { self, inputs, ... }:
 
 {
-  flake.nixosModules.spicetify = { config, pkgs, lib, ... }:
+  flake.nixosModules.spicetify = { config, pkgs, lib, ... }: {
 imports = [
   # For NixOS
   inputs.spicetify-nix.nixosModules.default
@@ -28,8 +28,7 @@ marketplace
     pointer
   ];
 
-  theme = spicePkgs.themes.catppuccin;
-  colorScheme = "mocha";
-}
-
+  theme = spicePkgs.themes.onepunch;
+};
+};
 }
