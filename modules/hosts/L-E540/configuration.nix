@@ -5,8 +5,11 @@
     imports = [
       self.nixosModules.L-E540Hardware
       self.nixosModules.caps-esc
-
-      self.nixosModules.firefox
+      self.nixosModules.nh
+      self.nixosModules.hjem
+      self.nixosModules.base
+      self.nixosModules.zen
+      self.nixosModules.spicetify
     ];
 
   services.displayManager.ly = {
