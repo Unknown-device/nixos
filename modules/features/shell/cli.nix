@@ -1,7 +1,11 @@
 {
   flake.nixosModules.cli = { pkgs, ... }:
     {
-      environment.sytemPackages = with pkgs; [
+            programs.zoxide.enable = true;
+      users.defaultUserShell = pkgs.fish;
+      programs.fish.enable = true;
+
+      environment.systemPackages = with pkgs; [
         git
         dig
         app2unit
@@ -28,13 +32,5 @@
         yt-dlp
         lazygit
       ];
-      environment.shellAliases = {
-        z = "cd";
-        ls = "eza --icons";
-        ll = "eza -l --icons";
-        la = "eza -a --icons";
-        lt = "eza --tree --icons";
-        lla = "eza -la --icons";
-      };
     };
 }

@@ -12,6 +12,7 @@
         self.nixosModules.hjem
         self.nixosModules.base
         self.nixosModules.zen
+        self.nixosModules.shell
         self.nixosModules.spicetify
         self.nixosModules.nvf
       ];
@@ -103,11 +104,8 @@
         self.packages.${pkgs.system}.noctalia-shell
       ];
 
-      users.defaultUserShell = pkgs.fish;
-      programs.fish.enable = true;
       programs.niri.enable = true;
       programs.niri.package = self.packages."${pkgs.system}".niri;
-      programs.zoxide.enable = true;
 
       hardware.bluetooth = {
         enable = true;
