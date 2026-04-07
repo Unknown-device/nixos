@@ -8,7 +8,6 @@
     }:
     {
 
-      programs.starship.enableFishIntegration = true;
       programs.starship = {
         enable = true;
         settings = {

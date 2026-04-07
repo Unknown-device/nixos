@@ -17,7 +17,7 @@
       settings = {
         enable_audio_bell = "no";
 
-        font_size = 15;
+        font_size = 11;
         font_family = "JetBrainsMono Nerd Font";
 
         cursor_text_color = "background";

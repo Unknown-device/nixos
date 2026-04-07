@@ -15,10 +15,40 @@
         self.nixosModules.shell
         self.nixosModules.spicetify
         self.nixosModules.nvf
+        inputs.nixos-hardware.nixosModules.dell-latitude-5490
       ];
 
-      services.displayManager.ly = {
+      environment.systemPackages = with pkgs; [
+        xwayland-satellite # system/wayland component
+        gsettings-desktop-schemas # schema data
+        dconf # config backend
+        firefox # GUI
+        kitty # terminal emulator (GUI)
+        vesktop # GUI (Discord client)
+        bibata-cursors # theme
+        openjdk # runtime (not a CLI tool itself)
+        imv # image viewer (GUI)
+        zoom-us
+        self.packages.${pkgs.system}.noctalia-shell
+      ];
+
+      programs.niri.enable = true;
+      programs.niri.package = self.packages."${pkgs.system}".niri;
+      services.displayManager.ly.enable = true;
+
+      services.upower.enable = true;
+      hardware.bluetooth = {
         enable = true;
+        powerOnBoot = true;
+        settings = {
+          General = {
+            Experimental = true;
+            FastConnectable = true;
+          };
+          Policy = {
+            AutoEnable = true;
+          };
+        };
       };
 
       fonts.packages = with pkgs; [
@@ -28,7 +58,6 @@
         corefonts
         unifont
       ];
-
       fonts.fontconfig.defaultFonts = {
         serif = [ "Ubuntu Sans" ];
         sansSerif = [ "Ubuntu Sans" ];
@@ -39,6 +68,7 @@
         "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}"
         "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
       ];
+
       nix.settings.auto-optimise-store = true;
 
       programs.virt-manager.enable = true;
@@ -47,6 +77,8 @@
       virtualisation.spiceUSBRedirection.enable = true;
 
       services.power-profiles-daemon.enable = true;
+      services.thermald.enable = true;
+
       boot.kernelPackages = pkgs.linuxPackages_latest;
       boot.loader.grub.useOSProber = true;
       boot.loader.grub.enable = true;
@@ -90,36 +122,6 @@
         "nix-command"
         "flakes"
       ];
-      documentation.man.cache.enable = false;
-      environment.systemPackages = with pkgs; [
-        xwayland-satellite # system/wayland component
-        gsettings-desktop-schemas # schema data
-        dconf # config backend
-        firefox # GUI
-        kitty # terminal emulator (GUI)
-        vesktop # GUI (Discord client)
-        bibata-cursors # theme
-        openjdk # runtime (not a CLI tool itself)
-        imv # image viewer (GUI)
-        self.packages.${pkgs.system}.noctalia-shell
-      ];
-
-      programs.niri.enable = true;
-      programs.niri.package = self.packages."${pkgs.system}".niri;
-
-      hardware.bluetooth = {
-        enable = true;
-        powerOnBoot = true;
-        settings = {
-          General = {
-            Experimental = true;
-            FastConnectable = true;
-          };
-          Policy = {
-            AutoEnable = true;
-          };
-        };
-      };
 
       nix.settings = {
         extra-substituters = [
