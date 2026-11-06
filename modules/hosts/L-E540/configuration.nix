@@ -6,28 +6,20 @@
     {
       # import any other modules from here
       imports = [
-        self.nixosModules.L-E540Hardware
         self.nixosModules.caps-esc
+	self.nixosModules.L-E5470Hardware
         self.nixosModules.nh
-        self.nixosModules.hjem
         self.nixosModules.base
-        self.nixosModules.zen
         self.nixosModules.shell
-        self.nixosModules.spicetify
         self.nixosModules.nvf
-        inputs.nixos-hardware.nixosModules.dell-latitude-5490
-      ];
+          ];
 
       environment.systemPackages = with pkgs; [
         xwayland-satellite # system/wayland component
-        gsettings-desktop-schemas # schema data
-        dconf # config backend
         firefox # GUI
         kitty # terminal emulator (GUI)
         vesktop # GUI (Discord client)
         bibata-cursors # theme
-        openjdk # runtime (not a CLI tool itself)
-        imv # image viewer (GUI)
         zoom-us
         self.packages.${pkgs.system}.noctalia-shell
       ];
@@ -35,54 +27,23 @@
       programs.niri.enable = true;
       programs.niri.package = self.packages."${pkgs.system}".niri;
       services.displayManager.ly.enable = true;
-
+	
+      boot.loader.systemd-boot.enable = true;
+      boot.loader.efi.canTouchEfiVariables = true;
       services.upower.enable = true;
       hardware.bluetooth = {
         enable = true;
-        powerOnBoot = true;
         settings = {
           General = {
             Experimental = true;
             FastConnectable = true;
           };
-          Policy = {
-            AutoEnable = true;
-          };
-        };
+                     };
       };
-
-      fonts.packages = with pkgs; [
-        nerd-fonts.jetbrains-mono
-        ubuntu-sans
-        cm_unicode
-        corefonts
-        unifont
-      ];
-      fonts.fontconfig.defaultFonts = {
-        serif = [ "Ubuntu Sans" ];
-        sansSerif = [ "Ubuntu Sans" ];
-        monospace = [ "JetBrainsMono Nerd Font" ];
-      };
-
-      environment.sessionVariables.XDG_DATA_DIRS = [
-        "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}"
-        "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
-      ];
-
-      nix.settings.auto-optimise-store = true;
-
-      programs.virt-manager.enable = true;
-      users.groups.libvirtd.members = [ "hadi-io" ];
-      virtualisation.libvirtd.enable = true;
-      virtualisation.spiceUSBRedirection.enable = true;
 
       services.power-profiles-daemon.enable = true;
-      services.thermald.enable = true;
+     
 
-      boot.kernelPackages = pkgs.linuxPackages_latest;
-      boot.loader.grub.useOSProber = true;
-      boot.loader.grub.enable = true;
-      boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
       networking.hostName = "nixos";
       networking.networkmanager.enable = true;
 
@@ -112,6 +73,7 @@
         extraGroups = [
           "networkmanager"
           "wheel"
+	  "dialout"
         ];
       };
 
@@ -123,16 +85,5 @@
         "flakes"
       ];
 
-      nix.settings = {
-        extra-substituters = [
-          "https://noctalia.cachix.org"
-          "https://nix-community.cachix.org"
-        ];
-        extra-trusted-public-keys = [
-          "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
-          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        ];
-      };
-
-    };
+};
 }
