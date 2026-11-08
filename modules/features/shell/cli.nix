@@ -1,7 +1,8 @@
 {
-  flake.nixosModules.cli = { pkgs, ... }:
+  flake.nixosModules.cli =
+    { pkgs, ... }:
     {
-            programs.zoxide.enable = true;
+      programs.zoxide.enable = true;
       users.defaultUserShell = pkgs.fish;
       programs.fish.enable = true;
 
@@ -29,7 +30,6 @@
         tree-sitter
         imagemagick
         ffmpeg-full
-        yt-dlp
         lazygit
       ];
     };
