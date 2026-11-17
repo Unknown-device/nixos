@@ -1,17 +1,21 @@
-{ self, inputs, ... }:
-
 {
-  flake.nixosModules.nvf = { config, pkgs, lib, ... }:
-
-  {
-    imports = [ inputs.nvf.nixosModules.default ];
+  self,
+  inputs,
+  ...
+}: {
+  flake.nixosModules.nvf = {
+    config,
+    pkgs,
+    lib,
+    ...
+  }: {
+    imports = [inputs.nvf.nixosModules.default];
 
     programs.nvf = {
       enable = true;
 
       settings = {
         vim = {
-
           ## Core options
           options = {
             foldcolumn = "1";
@@ -68,7 +72,7 @@
             extensions = [
               {
                 name = "fzf";
-                packages = [ pkgs.vimPlugins.telescope-fzf-native-nvim ];
+                packages = [pkgs.vimPlugins.telescope-fzf-native-nvim];
                 setup.fzf.fuzzy = true;
               }
             ];
@@ -89,9 +93,6 @@
           ## Autocomplete
           autocomplete.blink-cmp.enable = true;
 
-          ## Treesitter
-          treesitter.autotagHtml = true;
-
           ## LSP
           lsp = {
             enable = true;
@@ -105,23 +106,23 @@
             enableFormat = true;
             enableExtraDiagnostics = true;
 
-            nix = {
-              enable = true;
-            };
-
+            nix.enable = true;
             css.enable = true;
             html.enable = true;
             json.enable = true;
             markdown.enable = true;
             clang.enable = true;
-            rust.enable = true;
-            ts.enable = true;
+            rust = {
+              enable = true;
+              format.enable = true;
+            };
+            python.enable = true;
           };
 
           ## Misc utilities
           utility.ccc.enable = true;
+          utility.vim-wakatime.enable = true;
           notes.todo-comments.enable = true;
-
         };
       };
     };

@@ -8,23 +8,24 @@
       imports = [
         self.nixosModules.caps-esc
         self.nixosModules.L-E5470Hardware
-        self.nixosModules.Virtualization
         self.nixosModules.nh
+        self.nixosModules.nvf
         self.nixosModules.base
         self.nixosModules.shell
         self.nixosModules.cli
-        self.nixosModules.nvf
       ];
 
       environment.systemPackages = with pkgs; [
         xwayland-satellite # system/wayland component
         firefox # GUI
-        helix
+        godot
+        nemo
         kitty # terminal emulator (GUI)
         vesktop # GUI (Discord client)
         bibata-cursors # theme
         zoom-us
-        self.packages.${pkgs.system}.noctalia-shell
+        clang
+        self.packages.${pkgs.system}.noctalia
       ];
 
       programs.niri.enable = true;

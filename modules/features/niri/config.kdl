@@ -138,7 +138,7 @@ cursor {
     position x=1920 y=0
       }
 
-      spawn-at-startup "noctalia-shell"
+      spawn-at-startup "noctalia"
 
       // Settings that influence how windows are positioned and sized.
       // Find more information on the wiki:
@@ -385,14 +385,14 @@ cursor {
           // The quit action will show a confirmation dialog to avoid accidental exits.
           Mod+Shift+E { quit; }
 
-          Mod+Space { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
-          Mod+S { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
-          Mod+Comma { spawn "noctalia-shell" "ipc" "call" "settings" "toggle"; }
-          Mod+V { spawn "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
-          Mod+C { spawn "noctalia-shell" "ipc" "call" "launcher" "calculator"; }
-          Mod+Alt+L { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+          Mod+Space { spawn "noctalia" "ipc" "call" "launcher" "toggle"; }
+          Mod+S { spawn "noctalia" "ipc" "call" "sessionMenu" "toggle"; }
+          Mod+Comma { spawn "noctalia" "ipc" "call" "settings" "toggle"; }
+          Mod+V { spawn "noctalia" "ipc" "call" "launcher" "clipboard"; }
+          Mod+C { spawn "noctalia" "ipc" "call" "launcher" "calculator"; }
+          Mod+Alt+L { spawn "noctalia" "ipc" "call" "lockScreen" "lock"; }
 Mod+W {spawn "zen-twilight";}
 Mod+E {spawn "nemo";}
-Mod+T {"spawn" "noctalia-shell" "ipc" "call" "plugin:todo" "togglePanel";}
+Mod+T {"spawn" "noctalia" "ipc" "call" "plugin:todo" "togglePanel";}
     Mod+Shift+P { power-off-monitors; }
       }
