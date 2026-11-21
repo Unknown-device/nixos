@@ -6,6 +6,7 @@
 
     environment.systemPackages = with pkgs; [
       git
+      pangolin-cli
       python3
       cargo
       rust-analyzer

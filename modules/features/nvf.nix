@@ -16,6 +16,9 @@
 
       settings = {
         vim = {
+          diagnostics.enable = true;
+          diagnostics.nvim-lint.enable = true;
+
           ## Core options
           options = {
             foldcolumn = "1";
